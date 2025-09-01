@@ -3,6 +3,8 @@ package dev.java10x.ninjasregister.Missions;
 import dev.java10x.ninjasregister.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tb_missions")
 public class MissionsModel {
@@ -10,10 +12,16 @@ public class MissionsModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private String description;
+
     private String rank;
-    private NinjaModel ninja;
+
+    // @OneToMany - The mission can have several ninjas!
+    @OneToMany(mappedBy = "missions")
+    private List<NinjaModel> ninjas;
 
 
     public MissionsModel() {
