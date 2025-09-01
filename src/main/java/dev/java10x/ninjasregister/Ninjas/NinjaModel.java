@@ -1,4 +1,4 @@
-package dev.java10x.ninjasregister;
+package dev.java10x.ninjasregister.Ninjas;
 
 import jakarta.persistence.*;
 
@@ -12,6 +12,7 @@ public class NinjaModel {
         private String name;
         private String email;
         private int age;
+        private List<MissionsModel> missions;
 
     public NinjaModel() {
     }
