@@ -1,4 +1,5 @@
 package dev.java10x.ninjasregister.Missions;
+import dev.java10x.ninjasregister.Ninjas.NinjaModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,12 @@ public class MissionsController {
     @GetMapping("/list")
     public List<MissionsModel> listMissions() {
         return missionsService.listMissions();
+    }
+
+    // Show mission by rank (READ)
+    @GetMapping("/list/{rank}")
+    public List<MissionsModel> getMissionByRank(@PathVariable String rank) {
+        return missionsService.getMissionByRank(rank);
     }
 
     // Add Mission (CREATE)
