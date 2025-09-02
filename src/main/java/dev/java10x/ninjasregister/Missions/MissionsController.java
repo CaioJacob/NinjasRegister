@@ -2,7 +2,7 @@ package dev.java10x.ninjasregister.Missions;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("missions")
+@RequestMapping("/missions")
 public class MissionsController {
 
     // Show all ninjas (READ)
