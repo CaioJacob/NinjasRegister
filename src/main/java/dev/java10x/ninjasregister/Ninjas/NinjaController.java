@@ -1,8 +1,6 @@
 package dev.java10x.ninjasregister.Ninjas;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping
@@ -13,6 +11,35 @@ public class NinjaController {
         return "This is my first message on this route";
     }
 
+    // Add ninja (CREATE)
+    @PostMapping("/create")
+    public String createNinja() {
+        return "Ninja created";
+    }
+
+    // Show all ninjas (READ)
+    @GetMapping("/all")
+    public String showAllNinjas() {
+        return "Show Ninjas";
+    }
+
+    // Show ninja by id (READ)
+    @GetMapping("/allID")
+    public String showAllNinjasById() {
+        return "Show Ninjas by ID";
+    }
+
+    // Change ninja data (UPDATE)
+    @PutMapping("/alterID")
+    public String alterNinjasById() {
+        return "Ninjas Altered";
+    }
+
+    // Delete ninja (DELETE)
+    @DeleteMapping("/deleteID")
+    public String deleteNinjasById() {
+        return "Ninja Deleted";
+    }
 
 
 }
