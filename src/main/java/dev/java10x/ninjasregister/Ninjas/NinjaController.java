@@ -1,17 +1,18 @@
 package dev.java10x.ninjasregister.Ninjas;
-
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/ninjas")
 public class NinjaController {
 
-    @GetMapping("/welcome")
-    public String Welcome() {
-        return "This is my first message on this route";
+    private NinjaService ninjaService;
+
+    public NinjaController(NinjaService ninjaService) {
+        this.ninjaService = ninjaService;
     }
 
-    // Add ninja (CREATE)
+     // Add ninja (CREATE)
     @PostMapping("/create")
     public String createNinja() {
         return "Ninja created";
@@ -19,8 +20,8 @@ public class NinjaController {
 
     // Show all ninjas (READ)
     @GetMapping("/list")
-    public String showAllNinjas() {
-        return "Show Ninjas";
+    public List<NinjaModel> listNinjas() {
+        return ninjaService.listNinjas();
     }
 
     // Show ninja by id (READ)

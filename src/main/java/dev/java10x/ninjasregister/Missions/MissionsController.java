@@ -1,14 +1,22 @@
 package dev.java10x.ninjasregister.Missions;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/missions")
 public class MissionsController {
 
-    // Show all ninjas (READ)
+    private MissionsService missionsService;
+
+    public MissionsController(MissionsService missionsService) {
+        this.missionsService = missionsService;
+    }
+
+    // Show all missions (READ)
     @GetMapping("/list")
-    public String listMissions() {
-        return "List of missions";
+    public List<MissionsModel> listMissions() {
+        return missionsService.listMissions();
     }
 
     // Add Mission (CREATE)
@@ -23,7 +31,7 @@ public class MissionsController {
         return "Mission Altered";
     }
 
-    // Delete ninja (DELETE)
+    // Delete mission (DELETE)
     @DeleteMapping("/delete")
     public String deleteMission() {
         return "Mission Deleted";

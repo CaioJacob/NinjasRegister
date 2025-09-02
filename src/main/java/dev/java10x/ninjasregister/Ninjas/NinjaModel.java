@@ -1,5 +1,6 @@
 package dev.java10x.ninjasregister.Ninjas;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.java10x.ninjasregister.Missions.MissionsModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,6 +35,7 @@ public class NinjaModel {
     // @ManyToOne - The ninja has one only mission!
     @ManyToOne
     @JoinColumn(name = "missions_id") // Foreing Key
+    @JsonIgnore
     private MissionsModel missions;
 
 
