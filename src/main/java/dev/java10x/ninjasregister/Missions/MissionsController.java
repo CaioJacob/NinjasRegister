@@ -26,10 +26,10 @@ public class MissionsController {
         return missionsService.getMissionByRank(rank);
     }
 
-    // Add Mission (CREATE)
+    // Add mission (CREATE)
     @PostMapping("/create")
-    public String createMission() {
-        return "Mission created";
+    public MissionsModel createMission(@RequestBody MissionsModel mission) {
+        return missionsService.createMission(mission);
     }
 
     // Change Mission data (UPDATE)

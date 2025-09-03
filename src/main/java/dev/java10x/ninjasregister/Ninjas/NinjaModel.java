@@ -35,7 +35,6 @@ public class NinjaModel {
     // @ManyToOne - The ninja has one only mission!
     @ManyToOne
     @JoinColumn(name = "missions_id") // Foreing Key
-    @JsonIgnore
     private MissionsModel missions;
 
 

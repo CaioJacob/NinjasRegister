@@ -1,5 +1,6 @@
 package dev.java10x.ninjasregister.Missions;
 
+import dev.java10x.ninjasregister.Ninjas.NinjaModel;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,11 @@ public class MissionsService {
     // List mission by Rank
     public List<MissionsModel> getMissionByRank(String rank) {
         return missionsRepository.findAllByRank(rank);
+    }
+
+    //Add a mission
+    public MissionsModel createMission(MissionsModel mission) {
+        return missionsRepository.save(mission);
     }
 
 }
