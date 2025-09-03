@@ -14,7 +14,7 @@ public class NinjaService {
     }
 
     // List all ninjas
-    public List<NinjaModel> listNinjas(){
+    public List<NinjaModel> listNinjas() {
         return ninjaRepository.findAll();
     }
 
@@ -32,6 +32,15 @@ public class NinjaService {
     // Delete Ninja - It has to be a method void
     public void deleteNinjasById(Long id) {
         ninjaRepository.deleteById(id);
+    }
+
+    // Update Ninja
+    public NinjaModel updateNinja(NinjaModel ninjaUpdated, Long id) {
+        if (ninjaRepository.existsById(id)) {
+            ninjaUpdated.setId(id);
+            return ninjaRepository.save(ninjaUpdated);
+        }
+        return null;
     }
 
 
