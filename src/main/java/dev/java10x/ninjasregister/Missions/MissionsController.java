@@ -39,9 +39,9 @@ public class MissionsController {
     }
 
     // Delete mission (DELETE)
-    @DeleteMapping("/delete")
-    public String deleteMission() {
-        return "Mission Deleted";
+    @DeleteMapping("/delete/{id}")
+    public void deleteMissionById(@PathVariable Long id) {
+        missionsService.deleteMissionById(id);
     }
 
 }
