@@ -32,10 +32,10 @@ public class MissionsController {
         return missionsService.createMission(mission);
     }
 
-    // Change Mission data (UPDATE)
-    @PutMapping("/alter")
-    public String alterMission() {
-        return "Mission Altered";
+    // Change mission data (UPDATE)
+    @PutMapping("/update/{id}")
+    public MissionsModel updateMission(@RequestBody  MissionsModel missionUpdated, @PathVariable Long id) {
+        return missionsService.updateMission(missionUpdated, id);
     }
 
     // Delete mission (DELETE)
