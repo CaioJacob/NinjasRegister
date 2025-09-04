@@ -1,6 +1,5 @@
 package dev.java10x.ninjasregister.Missions;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.java10x.ninjasregister.Ninjas.NinjaModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
