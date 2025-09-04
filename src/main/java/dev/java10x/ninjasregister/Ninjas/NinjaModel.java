@@ -1,6 +1,5 @@
 package dev.java10x.ninjasregister.Ninjas;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.java10x.ninjasregister.Missions.MissionsModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,11 +25,14 @@ public class NinjaModel {
     @Column(unique = true)
     private String email;
 
-    @Column(name = "img_url")
-    private String imgUrl;
-
     @Column(name = "age")
     private int age;
+
+    @Column(name = "rank")
+    private String rank;
+
+    @Column(name = "img_url")
+    private String imgUrl;
 
     // @ManyToOne - The ninja has one only mission!
     @ManyToOne
