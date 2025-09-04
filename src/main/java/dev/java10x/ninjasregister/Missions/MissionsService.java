@@ -9,9 +9,11 @@ import java.util.Optional;
 public class MissionsService {
 
     private MissionsRepository missionsRepository;
+    private MissionsMapper missionsMapper;
 
-    public MissionsService(MissionsRepository missionsRepository) {
+    public MissionsService(MissionsRepository missionsRepository, MissionsMapper missionsMapper) {
         this.missionsRepository = missionsRepository;
+        this.missionsMapper = missionsMapper;
     }
 
     // List all missions
@@ -25,8 +27,10 @@ public class MissionsService {
     }
 
     //Add a mission
-    public MissionsModel createMission(MissionsModel mission) {
-        return missionsRepository.save(mission);
+    public MissionsDTO createMission(MissionsDTO missionDTO) {
+        MissionsModel mission =  missionsMapper.map(missionDTO);
+        mission = missionsRepository.save(mission);
+        return missionsMapper.map(mission);
     }
 
     // Delete Mission - It has to be a method void

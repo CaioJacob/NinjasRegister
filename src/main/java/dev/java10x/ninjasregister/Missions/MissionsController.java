@@ -28,7 +28,7 @@ public class MissionsController {
 
     // Add mission (CREATE)
     @PostMapping("/create")
-    public MissionsModel createMission(@RequestBody MissionsModel mission) {
+    public MissionsDTO createMission(@RequestBody MissionsDTO mission) {
         return missionsService.createMission(mission);
     }
 
