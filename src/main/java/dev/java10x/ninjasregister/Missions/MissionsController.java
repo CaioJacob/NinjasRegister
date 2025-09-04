@@ -16,13 +16,13 @@ public class MissionsController {
 
     // Show all missions (READ)
     @GetMapping("/list")
-    public List<MissionsModel> listMissions() {
+    public List<MissionsDTO> listMissions() {
         return missionsService.listMissions();
     }
 
     // Show mission by rank (READ)
     @GetMapping("/list/{rank}")
-    public List<MissionsModel> getMissionByRank(@PathVariable String rank) {
+    public List<MissionsDTO> getMissionByRank(@PathVariable String rank) {
         return missionsService.getMissionByRank(rank);
     }
 
@@ -34,7 +34,7 @@ public class MissionsController {
 
     // Change mission data (UPDATE)
     @PutMapping("/update/{id}")
-    public MissionsModel updateMission(@RequestBody  MissionsModel missionUpdated, @PathVariable Long id) {
+    public MissionsDTO updateMission(@RequestBody  MissionsDTO missionUpdated, @PathVariable Long id) {
         return missionsService.updateMission(missionUpdated, id);
     }
 
