@@ -33,6 +33,11 @@ public class MissionsService {
                 .toList();
     }
 
+    // Check if mission exists by ID
+    public boolean existsMissionById(Long id) {
+        return missionsRepository.existsById(id);
+    }
+
     //Add a mission
     public MissionsDTO createMission(MissionsDTO missionDTO) {
         MissionsModel mission =  missionsMapper.map(missionDTO);
