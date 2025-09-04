@@ -16,25 +16,25 @@ public class MissionsController {
 
     // Show all missions (READ)
     @GetMapping("/list")
-    public List<MissionsModel> listMissions() {
+    public List<MissionsDTO> listMissions() {
         return missionsService.listMissions();
     }
 
     // Show mission by rank (READ)
     @GetMapping("/list/{rank}")
-    public List<MissionsModel> getMissionByRank(@PathVariable String rank) {
+    public List<MissionsDTO> getMissionByRank(@PathVariable String rank) {
         return missionsService.getMissionByRank(rank);
     }
 
     // Add mission (CREATE)
     @PostMapping("/create")
-    public MissionsModel createMission(@RequestBody MissionsModel mission) {
+    public MissionsDTO createMission(@RequestBody MissionsDTO mission) {
         return missionsService.createMission(mission);
     }
 
     // Change mission data (UPDATE)
     @PutMapping("/update/{id}")
-    public MissionsModel updateMission(@RequestBody  MissionsModel missionUpdated, @PathVariable Long id) {
+    public MissionsDTO updateMission(@RequestBody  MissionsDTO missionUpdated, @PathVariable Long id) {
         return missionsService.updateMission(missionUpdated, id);
     }
 

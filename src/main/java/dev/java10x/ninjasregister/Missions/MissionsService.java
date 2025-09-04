@@ -4,42 +4,56 @@ import dev.java10x.ninjasregister.Ninjas.NinjaModel;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class MissionsService {
 
     private MissionsRepository missionsRepository;
+    private MissionsMapper missionsMapper;
 
-    public MissionsService(MissionsRepository missionsRepository) {
+    public MissionsService(MissionsRepository missionsRepository, MissionsMapper missionsMapper) {
         this.missionsRepository = missionsRepository;
+        this.missionsMapper = missionsMapper;
     }
 
     // List all missions
-    public List<MissionsModel> listMissions(){
-        return missionsRepository.findAll();
+    public List<MissionsDTO> listMissions(){
+        List<MissionsModel> missions = missionsRepository.findAll();
+        return missions.stream()
+                .map(missionsMapper::map)
+                .collect(Collectors.toList());
     }
 
     // List mission by Rank
-    public List<MissionsModel> getMissionByRank(String rank) {
-        return missionsRepository.findAllByRank(rank);
+    public List<MissionsDTO> getMissionByRank(String rank) {
+        List<MissionsModel> missionByRank = missionsRepository.findAllByRank(rank);
+        return missionByRank.stream()
+                .map(missionsMapper::map)
+                .toList();
     }
 
     //Add a mission
-    public MissionsModel createMission(MissionsModel mission) {
-        return missionsRepository.save(mission);
+    public MissionsDTO createMission(MissionsDTO missionDTO) {
+        MissionsModel mission =  missionsMapper.map(missionDTO);
+        mission = missionsRepository.save(mission);
+        return missionsMapper.map(mission);
     }
 
-    // Delete Mission - It has to be a method void
+    // Delete Mission
     public void deleteMissionById(Long id) {
         missionsRepository.deleteById(id);
     }
 
     // Update Mission
-    public MissionsModel updateMission(MissionsModel missionUpdated, Long id) {
-        if (missionsRepository.existsById(id)) {
+    public MissionsDTO updateMission(MissionsDTO missionDTO, Long id) {
+        Optional<MissionsModel> existingMission = missionsRepository.findById(id);
+        if (existingMission.isPresent()) {
+            MissionsModel missionUpdated = missionsMapper.map(missionDTO);
             missionUpdated.setId(id);
-            return missionsRepository.save(missionUpdated);
-        }
+            MissionsModel missionSaved = missionsRepository.save(missionUpdated);
+            return missionsMapper.map(missionSaved);
+            }
         return null;
     }
 
