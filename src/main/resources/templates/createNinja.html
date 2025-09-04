@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Ninja</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .mensagem {
+            color: green;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #4CAF50;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<h1>Add New Ninja</h1>
+<div class="form-container">
+    <div th:if="${message}" class="message" th:text="${message}"></div>
+    <form th:action="@{/ninjas/ui/save}" th:object="${ninja}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required />
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" th:field="*{age}" min="1" required />
+
+        <label for="rank">Rank:</label>
+        <input type="text" id="rank" th:field="*{rank}" required />
+
+        <label for="imgUrl">Image URL:</label>
+        <input type="text" id="imgUrl" th:field="*{imgUrl}" />
+
+        <label for="missionId">Mission ID:</label>
+        <input type="number" id="missionId" name="missionId" placeholder="Enter existing mission ID" />
+
+        <button type="submit">Add Ninja</button>
+    </form>
+
+    <a th:href="@{/ninjas/ui/list}">Back to the Ninja list</a>
+</div>
+</body>
+</html>

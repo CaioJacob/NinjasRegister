@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Update Ninja</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"], input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<h1>Update Ninja</h1>
+
+<form th:action="@{/ninjas/ui/update}" th:object="${ninja}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" required />
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" th:field="*{age}" min="1" required />
+
+    <label for="rank">Rank:</label>
+    <input type="text" id="rank" th:field="*{rank}" required />
+
+    <label for="imgUrl">Image URL:</label>
+    <input type="text" id="imgUrl" th:field="*{imgUrl}" />
+
+    <button type="submit">Update Ninja</button>
+</form>
+
+<a href="/ninjas/ui/list">Back to Ninja List</a>
+</body>
+</html>

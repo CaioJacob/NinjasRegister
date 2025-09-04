@@ -38,6 +38,11 @@ public class MissionsService {
         return missionsRepository.existsById(id);
     }
 
+    // Get mission by ID
+    public MissionsModel getMissionById(Long id) {
+        return missionsRepository.findById(id).orElse(null);
+    }
+
     //Add a mission
     public MissionsDTO createMission(MissionsDTO missionDTO) {
         MissionsModel mission =  missionsMapper.map(missionDTO);
