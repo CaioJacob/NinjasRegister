@@ -95,9 +95,9 @@
         <td th:text="${ninja.name}"> </td>
         <td th:text="${ninja.age}"> </td>
         <td th:text="${ninja.email}"> </td>
-        <td th:text="${ninja.rank}"> </td>
+        <td th:text="${ninja.ninjaRank}"> </td>
         <td>
-    <span th:if="${ninja.missions != null}"><span th:text="${ninja.missions.name}"></span>, Rank: <span th:text="${ninja.missions.rank}"></span> </span>
+    <span th:if="${ninja.missions != null}"><span th:text="${ninja.missions.name}"></span>, Rank: <span th:text="${ninja.missions.ninjaRank}"></span> </span>
     <span th:if="${ninja.missions == null}">No registered missions for the ninja</span>
         </td>
         <td>
