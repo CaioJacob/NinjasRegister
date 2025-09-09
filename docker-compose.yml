@@ -12,3 +12,15 @@ services:
       - "3307:3306"
     restart: always
 
+  app:
+    image: caiojacob/ninjasregister:v2.0.0
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/ninjasdb
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+    depends_on:
+      - mysql
+    restart: always
+
