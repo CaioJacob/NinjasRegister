@@ -1,6 +1,4 @@
 package dev.java10x.ninjasregister.Missions;
-import dev.java10x.ninjasregister.Ninjas.NinjaDTO;
-import dev.java10x.ninjasregister.Ninjas.NinjaModel;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
