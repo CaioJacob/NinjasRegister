@@ -1,11 +1,10 @@
--- V1: Create tb_register table
+-- V1: Create TB_REGISTER table
 
-CREATE TABLE tb_register (
+CREATE TABLE TB_REGISTER (
 id BIGINT AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(255),
 email VARCHAR(255) UNIQUE,
 age INT,
-rank VARCHAR(255),
 img_url VARCHAR(255),
 missions_id BIGINT
 );
