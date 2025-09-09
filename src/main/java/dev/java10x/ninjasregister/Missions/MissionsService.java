@@ -1,6 +1,5 @@
 package dev.java10x.ninjasregister.Missions;
 
-import dev.java10x.ninjasregister.Ninjas.NinjaModel;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
